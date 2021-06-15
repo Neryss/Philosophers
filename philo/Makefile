@@ -34,13 +34,15 @@ CLIBS = -lpthread
 
 
 HEADERS = \
-	./includes/philo.h
+	./includes/philo.h \
 
 PHILO_SRC = \
-	./srcs/main.c
+	./srcs/main.c \
+	./srcs/error.c \
+	./srcs/philo_main.c \
 
 PHILO_LIB = \
-	./lib/ft_atol.c
+	./lib/ft_atol.c \
 
 SRCS = \
 	$(PHILO_SRC) \

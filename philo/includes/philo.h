@@ -4,10 +4,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <pthread.h>
 
 typedef struct s_handler
 {
-	int	nb_philo;
+	int			nb_philo;
 	long long	time_to_die;
 	long long	time_to_eat;
 	long long	time_to_sleep;
@@ -15,5 +16,6 @@ typedef struct s_handler
 }				t_handler;
 
 long long	ft_atol(const char *str);
+int			main_loop(void);
 
 #endif

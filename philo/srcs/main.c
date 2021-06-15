@@ -24,6 +24,28 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 	return (0);
 }
 
+int	wait_threads(pthread_t *tid, t_handler *handler)
+{
+	
+}
+
+int	init_threads(t_handler *handler)
+{
+	pthread_t	*tid;
+	int			i;
+
+	i = -1;
+	tid = malloc(sizeof(pthread_t) * handler->nb_philo);
+	if (!tid)
+		return (1);
+	while (++i < handler->nb_philo)
+	{
+		if (pthread_create(&tid[i], NULL, (void *)main_loop, NULL))
+			return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_handler	handler;
