@@ -28,7 +28,6 @@ long long	ft_atol(const char *str)
 	neg = 0;
 	pos = 0;
 	res = 0;
-	printf("atol string [%s]\n", str);
 	i = ft_check_white_spaces((char *)str, 0);
 	while (str[i] == '+' || str[i] == '-')
 	{

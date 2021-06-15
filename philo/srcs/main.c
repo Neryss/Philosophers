@@ -19,14 +19,23 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 			handler->nb_to_eat = ft_atol(argv[5]);
 		else
 			handler->nb_to_eat = -1;
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }
 
 int	wait_threads(pthread_t *tid, t_handler *handler)
 {
-	
+	int	i;
+
+	i = 0;
+	while (i < handler->nb_philo)
+	{
+		pthread_join(tid[i], NULL);
+		printf("thread joined\n");
+		i++;
+	}
+	return (0);
 }
 
 int	init_threads(t_handler *handler)
@@ -34,15 +43,18 @@ int	init_threads(t_handler *handler)
 	pthread_t	*tid;
 	int			i;
 
-	i = -1;
+	i = 0;
 	tid = malloc(sizeof(pthread_t) * handler->nb_philo);
 	if (!tid)
 		return (1);
-	while (++i < handler->nb_philo)
+	while (i < handler->nb_philo)
 	{
 		if (pthread_create(&tid[i], NULL, (void *)main_loop, NULL))
 			return (1);
+		i++;
 	}
+	if (wait_threads(tid, handler))
+		return (1);
 	return (0);
 }
 
@@ -50,7 +62,9 @@ int	main(int argc, char **argv)
 {
 	t_handler	handler;
 
-	if (!init_handler(argc, argv, &handler))
+	if (init_handler(argc, argv, &handler))
+		return (1);
+	if (init_threads(&handler))
 		return (1);
 	print_handler(&handler);
 	return (0);
