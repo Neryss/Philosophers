@@ -1,4 +1,12 @@
+#include "../includes/philo.h"
 
+static int	ft_check_white_spaces(char *str, int i)
+{
+	while (str[i] == '\r' || str[i] == '\v' || str[i] == '\t'
+		|| str[i] == '\f' || str[i] == '\n' || str[i] == ' ')
+		i++;
+	return (i);
+}
 
 static int	calcul_res(long long res, int neg, int pos)
 {
@@ -20,6 +28,7 @@ long long	ft_atol(const char *str)
 	neg = 0;
 	pos = 0;
 	res = 0;
+	printf("atol string [%s]\n", str);
 	i = ft_check_white_spaces((char *)str, 0);
 	while (str[i] == '+' || str[i] == '-')
 	{

@@ -40,7 +40,7 @@ PHILO_SRC = \
 	./srcs/main.c
 
 PHILO_LIB = \
-	.lib/ft_atol.c
+	./lib/ft_atol.c
 
 SRCS = \
 	$(PHILO_SRC) \
