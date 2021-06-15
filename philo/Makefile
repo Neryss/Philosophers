@@ -28,7 +28,7 @@ MAKE = make
 CFLAGS = -Wall -Wextra -Werror
 # CFLAGS += -O3 -fno-builtin
 CFLAGS += -g
-CFLAGS += -fsanitize=address
+# CFLAGS += -fsanitize=address
 
 CLIBS = -lpthread
 
@@ -40,6 +40,7 @@ PHILO_SRC = \
 	./srcs/main.c \
 	./srcs/error.c \
 	./srcs/philo_main.c \
+	./srcs/init.c \
 
 PHILO_LIB = \
 	./lib/ft_atol.c \

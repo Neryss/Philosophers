@@ -2,26 +2,11 @@
 
 void	print_handler(t_handler *handler)
 {
-	printf("Handler :\nnumber of philos [%d]\ntime to die [%lld]\ntime to eat [%lld]\ntime to sleep [%lld]\nnumber of times they'll eat [%lld]\n",
-		handler->nb_philo, handler->time_to_die, handler->time_to_eat,
-		handler->time_to_sleep, handler->nb_to_eat);
-}
-
-int	init_handler(int argc, char **argv, t_handler *handler)
-{
-	if (argc == 5 || argc == 6)
-	{
-		handler->nb_philo = ft_atol(argv[1]);
-		handler->time_to_die = ft_atol(argv[2]);
-		handler->time_to_eat = ft_atol(argv[3]);
-		handler->time_to_sleep = ft_atol(argv[4]);
-		if (argc == 6)
-			handler->nb_to_eat = ft_atol(argv[5]);
-		else
-			handler->nb_to_eat = -1;
-		return (0);
-	}
-	return (1);
+	printf("Handler :\nnumber of philos [%d]\n", handler->nb_philo);
+	printf("time to die [%lld]\n", handler->time_to_die);
+	printf("time to eat [%lld]\n", handler->time_to_eat);
+	printf("time to sleep [%lld]\n", handler->time_to_sleep);
+	printf("number of times they'll eat [%lld]\n", handler->nb_to_eat);
 }
 
 int	wait_threads(pthread_t *tid, t_handler *handler)
@@ -35,6 +20,7 @@ int	wait_threads(pthread_t *tid, t_handler *handler)
 		printf("thread joined\n");
 		i++;
 	}
+	free(tid);
 	return (0);
 }
 
@@ -49,7 +35,8 @@ int	init_threads(t_handler *handler)
 		return (1);
 	while (i < handler->nb_philo)
 	{
-		if (pthread_create(&tid[i], NULL, (void *)main_loop, NULL))
+		if (pthread_create(&tid[i], NULL, (void *)main_loop,
+				&handler->philo[i]))
 			return (1);
 		i++;
 	}
