@@ -1,14 +1,5 @@
 #include "../includes/philo.h"
 
-void	print_handler(t_handler *handler)
-{
-	printf("Handler :\nnumber of philos [%d]\n", handler->nb_philo);
-	printf("time to die [%lld]\n", handler->time_to_die);
-	printf("time to eat [%lld]\n", handler->time_to_eat);
-	printf("time to sleep [%lld]\n", handler->time_to_sleep);
-	printf("number of times they'll eat [%lld]\n", handler->nb_to_eat);
-}
-
 int	wait_threads(pthread_t *tid, t_handler *handler)
 {
 	int	i;

@@ -8,9 +8,14 @@ void	init_philos(t_handler *handler)
 	handler->philo = malloc(sizeof(t_philo) * handler->nb_philo);
 	while (i < handler->nb_philo)
 	{
+		if (i)
+			handler->philo[i].prev_philo = &handler->philo[i - 1];
+		handler->philo[i].next_philo = &handler->philo[i + 1];
 		handler->philo[i].id = i;
 		i++;
 	}
+	handler->philo[i - 1].next_philo = &handler->philo[0];
+	handler->philo[0].prev_philo = &handler->philo[i - 1];
 }
 
 int	init_handler(int argc, char **argv, t_handler *handler)
@@ -18,6 +23,7 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 	if (argc == 5 || argc == 6)
 	{
 		handler->nb_philo = ft_atol(argv[1]);
+		handler->nb_forks = handler->nb_philo;
 		handler->time_to_die = ft_atol(argv[2]);
 		handler->time_to_eat = ft_atol(argv[3]);
 		handler->time_to_sleep = ft_atol(argv[4]);
@@ -26,6 +32,7 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 		else
 			handler->nb_to_eat = -1;
 		init_philos(handler);
+		print_philos(handler);
 		return (0);
 	}
 	return (1);

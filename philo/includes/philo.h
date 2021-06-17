@@ -10,15 +10,17 @@
 
 typedef struct s_philo
 {
-	int		id;
-	bool	f_left;
-	bool	f_right;
-	bool	is_dead;
+	int				id;
+	pthread_mutex_t	fork;
+	struct s_philo	*prev_philo;
+	struct s_philo	*next_philo;
+	bool			is_dead;
 }				t_philo;
 
 typedef struct s_handler
 {
 	int			nb_philo;
+	int			nb_forks;
 	long long	time_to_die;
 	long long	time_to_eat;
 	long long	time_to_sleep;
@@ -30,5 +32,7 @@ long long	ft_atol(const char *str);
 void		*main_loop(void *pouet);
 int			init_handler(int argc, char **argv, t_handler *handler);
 void		init_philos(t_handler *handler);
+void		print_handler(t_handler *handler);
+void		print_philos(t_handler *handler);
 
 #endif
