@@ -29,6 +29,7 @@ int	init_threads(t_handler *handler)
 		if (pthread_create(&tid[i], NULL, (void *)main_loop,
 				&handler->philo[i]))
 			return (1);
+		usleep(10);
 		i++;
 	}
 	if (wait_threads(tid, handler))

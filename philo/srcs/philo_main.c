@@ -6,9 +6,9 @@ void	*main_loop(void *pouet)
 	t_philo	*philo;
 
 	philo = pouet;
-	pthread_mutex_init(&philo->fork, NULL);
+	pthread_mutex_init(&philo->r_fork, NULL);
 	i = 0;
-	while (i < 50)
+	while (!philo->is_dead)
 	{
 		printf("yo les potes [%d]\n", philo->id);
 		i++;

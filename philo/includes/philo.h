@@ -11,9 +11,11 @@
 typedef struct s_philo
 {
 	int				id;
-	pthread_mutex_t	fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	r_fork;
 	struct s_philo	*prev_philo;
 	struct s_philo	*next_philo;
+	long long		timestamp;
 	bool			is_dead;
 }				t_philo;
 
