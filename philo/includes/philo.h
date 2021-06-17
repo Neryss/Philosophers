@@ -36,5 +36,7 @@ int			init_handler(int argc, char **argv, t_handler *handler);
 void		init_philos(t_handler *handler);
 void		print_handler(t_handler *handler);
 void		print_philos(t_handler *handler);
+long long	get_time();
+void		philo_action(char *action, t_philo *philo);
 
 #endif

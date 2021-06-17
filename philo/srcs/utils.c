@@ -23,3 +23,16 @@ void	print_philos(t_handler *handler)
 		i++;
 	}
 }
+
+long long	get_time()
+{
+	struct timeval	actual;
+
+	gettimeofday(&actual, NULL);
+	return (actual.tv_sec * 1000 + actual.tv_usec / 1000);
+}
+
+void	philo_action(char *action, t_philo *philo)
+{
+	printf("%lld %d is %s\n", get_time() - philo->timestamp, philo->id, action);
+}
