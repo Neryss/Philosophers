@@ -47,12 +47,15 @@ int	init_threads(t_handler *handler)
 
 int	main(int argc, char **argv)
 {
-	t_handler	handler;
+	t_handler		handler;
+	struct timeval	start;
 
 	if (init_handler(argc, argv, &handler))
 		return (1);
 	if (init_threads(&handler))
 		return (1);
+	gettimeofday(&start, NULL);
+	printf("Starting time : %ld\n", start.tv_sec * 1000 + start.tv_usec / 1000);
 	print_handler(&handler);
 	return (0);
 }

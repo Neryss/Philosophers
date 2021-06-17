@@ -5,10 +5,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <stdbool.h>
+# include <sys/time.h>
 
 typedef struct s_philo
 {
-	int	id;
+	int		id;
+	bool	f_left;
+	bool	f_right;
+	bool	is_dead;
 }				t_philo;
 
 typedef struct s_handler
