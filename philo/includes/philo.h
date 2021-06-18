@@ -11,6 +11,7 @@
 typedef struct s_philo
 {
 	int				id;
+	int				nb_eat;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	r_fork;
 	struct s_philo	*prev_philo;

@@ -12,6 +12,8 @@ void	init_philos(t_handler *handler)
 			handler->philo[i].prev_philo = &handler->philo[i - 1];
 		handler->philo[i].next_philo = &handler->philo[i + 1];
 		handler->philo[i].id = i;
+		handler->philo[i].nb_eat = 0;
+		pthread_mutex_init(&handler->philo[i].r_fork, NULL);
 		i++;
 	}
 	handler->philo[i - 1].next_philo = &handler->philo[0];
