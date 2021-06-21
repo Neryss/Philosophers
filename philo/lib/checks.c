@@ -12,7 +12,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*(const unsigned char *)s1 - *(const unsigned char *)(s2 - 1));
 }
 
-
 int	check_overflow(char *argv)
 {
 	char	*tmp;
@@ -35,7 +34,7 @@ int	check_overflow(char *argv)
 			argv++;
 	}
 	if (ft_strcmp(argv, tmp))
-		return(0);
+		return (0);
 	free(tmp);
 	return (1);
 }
