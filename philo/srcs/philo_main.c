@@ -27,6 +27,7 @@ void	*main_loop(void *pouet)
 	while (!philo->is_dead && !philo->handler->dead)
 	{
 		philo_eat(philo);
+		philo_action(THINK, philo);
 	}
 	pthread_join(philo->monitor.pthread, NULL);
 	return (NULL);

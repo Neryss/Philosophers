@@ -16,6 +16,7 @@ void	*monitor_philo(void *v_philo)
 			philo->is_dead = true;
 			philo->handler->dead = true;
 			philo_action(DIE, philo);
+			pthread_mutex_lock(&philo->handler->print);
 			return (NULL);
 		}
 		usleep(100);
