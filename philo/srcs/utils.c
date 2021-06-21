@@ -32,9 +32,23 @@ long long	get_time()
 	return (actual.tv_sec * 1000 + actual.tv_usec / 1000);
 }
 
-void	philo_action(char *action, t_philo *philo)
+void	print_action(int type, t_philo *philo)
 {
 	pthread_mutex_lock(&philo->handler->print);
-	printf("%lld %d %s\n", get_time() - philo->timestamp, philo->id, action);
-	pthread_mutex_unlock(&philo->handler->print);
+	ft_putnbr(1, get_time() - philo->timestamp);
+	ft_putstr(1, " ");
+	ft_putnbr(1, philo->id);
+	// printf("%lld %d ", get_time() - philo->timestamp, philo->id);
+	if (type == FORK)
+		ft_putcolor(1, " has taken a fork\n", _YELLOW);
+	else if (type == EAT)
+		ft_putcolor(1, " is eating\n", _GREEN);
+	else if (type == SLEEP)
+		ft_putcolor(1, " is sleeping\n", _BLUE);
+	else if (type == THINK)
+		ft_putcolor(1, " is thinking\n", _MAGENTA);
+	else if (type == DIED)
+		ft_putcolor(1, " died\n", _RED);
+	if (type != DIED)
+		pthread_mutex_unlock(&philo->handler->print);
 }

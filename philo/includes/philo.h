@@ -8,11 +8,32 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
-# define FORK "has taken a fork"
-# define EAT "is eating"
-# define SLEEP "is sleeping"
-# define THINK "is thinking"
-# define DIE "died"
+# define	_DEFAULT			"\033[1;39m"
+# define	_RED				"\033[1;31m"
+# define	_GREEN				"\033[1;32m"
+# define	_YELLOW				"\033[1;33m"
+# define	_BLUE				"\033[1;34m"
+# define	_MAGENTA			"\033[1;35m"
+# define	_CYAN				"\033[1;36m"
+# define	_LIGHTGRAY			"\033[1;37m"
+# define	_DARKGRAY			"\033[1;90m"
+# define	_LIGHTRED			"\033[1;91m"
+# define	_LIGHTGREEN			"\033[1;92m"
+# define	_LIGHTYELLOW		"\033[1;93m"
+# define	_LIGHTBLUE			"\033[1;94m"
+# define	_LIGHTMAGENTA		"\033[1;95m"
+# define	_LIGHTCYAN			"\033[1;96m"
+# define	_WHITE				"\033[1;97m"
+
+# define	_END				"\033[1;0m"
+
+# define FORK					1
+# define EAT					2
+# define SLEEP					3
+# define THINK					4
+# define DIED					5
+
+# define PRINT_COLORS			1
 
 typedef struct s_monitor
 {
@@ -55,7 +76,13 @@ void		init_philos(t_handler *handler);
 void		print_handler(t_handler *handler);
 void		print_philos(t_handler *handler);
 long long	get_time();
-void		philo_action(char *action, t_philo *philo);
+void		print_action(int type, t_philo *philo);
 void		*monitor_philo(void *v_philo);
+void		ft_putcolor(int fd, char *str, char *color);
+void		ft_putstr(int fd, char *str);
+void		ft_putchar(int fd, char c);
+void		ft_putnbr(int fd, long long nb);
+size_t		ft_nblen(long long nb);
+size_t		ft_strlen(char *str);
 
 #endif

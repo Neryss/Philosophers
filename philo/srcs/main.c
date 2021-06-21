@@ -8,10 +8,13 @@ int	wait_threads(pthread_t *tid, t_handler *handler)
 	while (i < handler->nb_philo)
 	{
 		pthread_join(tid[i], NULL);
-		// printf("thread joined\n");
+		printf("joined\n");
 		i++;
 	}
 	free(tid);
+	i = 0;
+	while (i < handler->nb_philo)
+		free(&handler->philo[i++]);
 	return (0);
 }
 
@@ -22,6 +25,7 @@ int	init_threads(t_handler *handler)
 
 	i = 0;
 	tid = malloc(sizeof(pthread_t) * handler->nb_philo);
+	pthread_mutex_init(&handler->print, NULL);
 	if (!tid)
 		return (1);
 	while (i < handler->nb_philo)
@@ -47,6 +51,5 @@ int	main(int argc, char **argv)
 	if (init_threads(&handler))
 		return (1);
 	gettimeofday(&start, NULL);
-	// print_handler(&handler);
 	return (0);
 }

@@ -46,6 +46,8 @@ PHILO_SRC = \
 
 PHILO_LIB = \
 	./lib/ft_atol.c \
+	./lib/print.c \
+	./lib/len.c \
 
 SRCS = \
 	$(PHILO_SRC) \

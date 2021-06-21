@@ -15,7 +15,7 @@ void	*monitor_philo(void *v_philo)
 			pthread_mutex_unlock(&philo->r_fork);
 			philo->is_dead = true;
 			philo->handler->dead = true;
-			philo_action(DIE, philo);
+			print_action(DIED, philo);
 			pthread_mutex_lock(&philo->handler->print);
 			return (NULL);
 		}
