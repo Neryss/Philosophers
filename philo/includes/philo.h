@@ -84,5 +84,10 @@ void		ft_putchar(int fd, char c);
 void		ft_putnbr(int fd, long long nb);
 size_t		ft_nblen(long long nb);
 size_t		ft_strlen(char *str);
+int	check_overflow(char *argv);
+char	*ft_ltoa(long long n);
+long long	ft_atol(const char *str);
+void	ft_bzero(void *s, size_t n);
+bool	is_digits(char *str);
 
 #endif

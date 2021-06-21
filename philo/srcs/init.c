@@ -26,10 +26,24 @@ void	init_philos(t_handler *handler)
 	handler->philo[0].l_fork = &handler->philo[i - 1].r_fork;
 }
 
+static bool	check_args(char **argv)
+{
+	while (*argv)
+	{
+		if (!is_digits(*argv) || !check_overflow(*argv)
+			|| ft_atol(*argv) < 0)
+			return (false);
+		argv++;
+	}
+	return (true);
+}
+
 int	init_handler(int argc, char **argv, t_handler *handler)
 {
 	if (argc == 5 || argc == 6)
 	{
+		if (!check_args(argv + 1))
+			return (1);
 		handler->nb_philo = ft_atol(argv[1]);
 		handler->nb_forks = handler->nb_philo;
 		handler->time_to_die = ft_atol(argv[2]);
