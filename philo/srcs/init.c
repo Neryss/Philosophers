@@ -57,5 +57,5 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 		init_philos(handler);
 		return (0);
 	}
-	return (1);
+	return (2);
 }

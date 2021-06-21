@@ -46,11 +46,22 @@ int	main(int argc, char **argv)
 {
 	t_handler		handler;
 	struct timeval	start;
+	int				ret;
 
-	if (init_handler(argc, argv, &handler))
+	ret = init_handler(argc, argv, &handler);
+	if (ret)
+	{
+		if (ret == 2)
+			ft_putstr(2, "Invalid number of arguments\n");
+		else
+			ft_putstr(2, "Invalid arguments\n");
 		return (1);
+	}
 	if (init_threads(&handler))
+	{
+		ft_putstr(2, "Error during threads\n");
 		return (1);
+	}
 	gettimeofday(&start, NULL);
 	return (0);
 }
