@@ -2,13 +2,13 @@
 
 static void	*philo_die(t_philo *philo, bool n_print)
 {
-	pthread_mutex_unlock(philo->l_fork);
-	pthread_mutex_unlock(&philo->r_fork);
 	if (n_print)
 	{
 		print_action(DIED, philo);
 		philo->handler->dead = true;
 	}
+	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(&philo->r_fork);
 	philo->is_dead = true;
 	if (n_print)
 		pthread_mutex_unlock(&philo->handler->print);

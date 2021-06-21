@@ -34,7 +34,7 @@ long long	get_time(void)
 
 void	print_action(int type, t_philo *philo)
 {
-	if (philo->handler->dead)
+	if (philo->handler->dead || philo->is_dead)
 		return ;
 	pthread_mutex_lock(&philo->handler->print);
 	if (philo->handler->dead)

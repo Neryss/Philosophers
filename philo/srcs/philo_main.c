@@ -12,9 +12,9 @@ static void	philo_eat(t_philo *philo)
 	print_action(EAT, philo);
 	philo->nb_eat++;
 	usleep(philo->handler->time_to_eat * 1000);
+	philo->last_eat = get_time();
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(&philo->r_fork);
-	philo->last_eat = get_time();
 }
 
 static void	philo_sleep(t_philo *philo)
