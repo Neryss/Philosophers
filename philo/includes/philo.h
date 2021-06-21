@@ -12,11 +12,13 @@ typedef struct s_philo
 {
 	int				id;
 	int				nb_eat;
+	pthread_t		monitor;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	r_fork;
 	struct s_philo	*prev_philo;
 	struct s_philo	*next_philo;
 	long long		timestamp;
+	long long		last_eat;
 	bool			is_dead;
 }				t_philo;
 

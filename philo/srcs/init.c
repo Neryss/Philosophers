@@ -9,7 +9,10 @@ void	init_philos(t_handler *handler)
 	while (i < handler->nb_philo)
 	{
 		if (i)
+		{
 			handler->philo[i].prev_philo = &handler->philo[i - 1];
+			handler->philo[i].l_fork = &handler->philo[i - 1].r_fork;
+		}
 		handler->philo[i].next_philo = &handler->philo[i + 1];
 		handler->philo[i].id = i;
 		handler->philo[i].nb_eat = 0;
@@ -18,6 +21,7 @@ void	init_philos(t_handler *handler)
 	}
 	handler->philo[i - 1].next_philo = &handler->philo[0];
 	handler->philo[0].prev_philo = &handler->philo[i - 1];
+	handler->philo[0].l_fork = &handler->philo[i - 1].r_fork;
 }
 
 int	init_handler(int argc, char **argv, t_handler *handler)
