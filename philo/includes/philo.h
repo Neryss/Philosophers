@@ -8,11 +8,22 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
+# define FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+
+typedef struct s_monitor
+{
+	pthread_t		pthread;
+	struct s_philo	*philo;
+}				t_monitor;
+
 typedef struct s_philo
 {
 	int					id;
 	int					nb_eat;
-	pthread_t			monitor;
+	t_monitor			monitor;
 	pthread_mutex_t		*l_fork;
 	pthread_mutex_t		r_fork;
 	struct s_philo		*prev_philo;

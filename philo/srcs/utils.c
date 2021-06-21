@@ -34,5 +34,5 @@ long long	get_time()
 
 void	philo_action(char *action, t_philo *philo)
 {
-	printf("%lld %d is %s\n", get_time() - philo->timestamp, philo->id, action);
+	printf("%lld %d %s\n", get_time() - philo->timestamp, philo->id, action);
 }
