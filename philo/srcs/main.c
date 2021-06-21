@@ -8,13 +8,14 @@ int	wait_threads(pthread_t *tid, t_handler *handler)
 	while (i < handler->nb_philo)
 	{
 		pthread_join(tid[i], NULL);
-		printf("joined\n");
 		i++;
 	}
 	free(tid);
+	pthread_mutex_destroy(&handler->print);
 	i = 0;
 	while (i < handler->nb_philo)
-		free(&handler->philo[i++]);
+		pthread_mutex_destroy(&handler->philo[i++].r_fork);
+	free(handler->philo);
 	return (0);
 }
 

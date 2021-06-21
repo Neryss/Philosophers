@@ -41,7 +41,7 @@ int	init_handler(int argc, char **argv, t_handler *handler)
 			handler->nb_to_eat = -1;
 		handler->dead = false;
 		init_philos(handler);
-		print_philos(handler);
+		// print_philos(handler);
 		return (0);
 	}
 	return (1);

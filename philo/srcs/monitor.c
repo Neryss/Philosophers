@@ -13,10 +13,10 @@ void	*monitor_philo(void *v_philo)
 		{
 			pthread_mutex_unlock(philo->l_fork);
 			pthread_mutex_unlock(&philo->r_fork);
+			print_action(DIED, philo);
 			philo->is_dead = true;
 			philo->handler->dead = true;
-			print_action(DIED, philo);
-			pthread_mutex_lock(&philo->handler->print);
+			pthread_mutex_unlock(&philo->handler->print);
 			return (NULL);
 		}
 		usleep(100);

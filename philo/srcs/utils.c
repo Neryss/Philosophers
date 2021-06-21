@@ -34,7 +34,14 @@ long long	get_time()
 
 void	print_action(int type, t_philo *philo)
 {
+	if (philo->handler->dead)
+		return ;
 	pthread_mutex_lock(&philo->handler->print);
+	if (philo->handler->dead)
+	{
+		pthread_mutex_unlock(&philo->handler->print);
+		return ;
+	}
 	ft_putnbr(1, get_time() - philo->timestamp);
 	ft_putstr(1, " ");
 	ft_putnbr(1, philo->id);
