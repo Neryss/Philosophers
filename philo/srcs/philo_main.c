@@ -17,6 +17,12 @@ static void	philo_eat(t_philo *philo)
 	philo->last_eat = get_time();
 }
 
+static void	philo_sleep(t_philo *philo)
+{
+	print_action(SLEEP, philo);
+	usleep(philo->handler->time_to_sleep * 1000);
+}
+
 void	*main_loop(void *pouet)
 {
 	t_philo			*philo;
@@ -28,6 +34,7 @@ void	*main_loop(void *pouet)
 	while (!philo->is_dead && !philo->handler->dead)
 	{
 		philo_eat(philo);
+		philo_sleep(philo);
 		print_action(THINK, philo);
 	}
 	pthread_join(philo->monitor.pthread, NULL);
