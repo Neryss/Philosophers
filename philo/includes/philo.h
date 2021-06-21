@@ -75,7 +75,7 @@ int			init_handler(int argc, char **argv, t_handler *handler);
 void		init_philos(t_handler *handler);
 void		print_handler(t_handler *handler);
 void		print_philos(t_handler *handler);
-long long	get_time();
+long long	get_time(void);
 void		print_action(int type, t_philo *philo);
 void		*monitor_philo(void *v_philo);
 void		ft_putcolor(int fd, char *str, char *color);

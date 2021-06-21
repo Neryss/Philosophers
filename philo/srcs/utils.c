@@ -24,7 +24,7 @@ void	print_philos(t_handler *handler)
 	}
 }
 
-long long	get_time()
+long long	get_time(void)
 {
 	struct timeval	actual;
 
@@ -45,7 +45,6 @@ void	print_action(int type, t_philo *philo)
 	ft_putnbr(1, get_time() - philo->timestamp);
 	ft_putstr(1, " ");
 	ft_putnbr(1, philo->id);
-	// printf("%lld %d ", get_time() - philo->timestamp, philo->id);
 	if (type == FORK)
 		ft_putcolor(1, " has taken a fork\n", _YELLOW);
 	else if (type == EAT)

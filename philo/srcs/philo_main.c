@@ -10,6 +10,7 @@ static void	philo_eat(t_philo *philo)
 	print_action(FORK, philo);
 	start_eat = get_time();
 	print_action(EAT, philo);
+	philo->nb_eat++;
 	usleep(philo->handler->time_to_eat * 1000);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(&philo->r_fork);
