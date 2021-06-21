@@ -42,6 +42,7 @@ PHILO_SRC = \
 	./srcs/philo_main.c \
 	./srcs/init.c \
 	./srcs/utils.c \
+	./srcs/monitor.c \
 
 PHILO_LIB = \
 	./lib/ft_atol.c \

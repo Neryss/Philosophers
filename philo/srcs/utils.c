@@ -34,5 +34,7 @@ long long	get_time()
 
 void	philo_action(char *action, t_philo *philo)
 {
+	pthread_mutex_lock(&philo->handler->print);
 	printf("%lld %d %s\n", get_time() - philo->timestamp, philo->id, action);
+	pthread_mutex_unlock(&philo->handler->print);
 }

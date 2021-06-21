@@ -8,7 +8,7 @@ int	wait_threads(pthread_t *tid, t_handler *handler)
 	while (i < handler->nb_philo)
 	{
 		pthread_join(tid[i], NULL);
-		printf("thread joined\n");
+		// printf("thread joined\n");
 		i++;
 	}
 	free(tid);
@@ -47,7 +47,6 @@ int	main(int argc, char **argv)
 	if (init_threads(&handler))
 		return (1);
 	gettimeofday(&start, NULL);
-	printf("Starting time : %ld\n", start.tv_sec * 1000 + start.tv_usec / 1000);
-	print_handler(&handler);
+	// print_handler(&handler);
 	return (0);
 }

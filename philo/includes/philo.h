@@ -12,6 +12,7 @@
 # define EAT "is eating"
 # define SLEEP "is sleeping"
 # define THINK "is thinking"
+# define DIE "died"
 
 typedef struct s_monitor
 {
@@ -36,13 +37,15 @@ typedef struct s_philo
 
 typedef struct s_handler
 {
-	int			nb_philo;
-	int			nb_forks;
-	long long	time_to_die;
-	long long	time_to_eat;
-	long long	time_to_sleep;
-	long long	nb_to_eat;
-	t_philo		*philo;
+	int				nb_philo;
+	int				nb_forks;
+	long long		time_to_die;
+	long long		time_to_eat;
+	long long		time_to_sleep;
+	long long		nb_to_eat;
+	pthread_mutex_t	print;
+	t_philo			*philo;
+	bool			dead;
 }				t_handler;
 
 long long	ft_atol(const char *str);
@@ -53,5 +56,6 @@ void		print_handler(t_handler *handler);
 void		print_philos(t_handler *handler);
 long long	get_time();
 void		philo_action(char *action, t_philo *philo);
+void		*monitor_philo(void *v_philo);
 
 #endif
