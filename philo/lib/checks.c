@@ -33,9 +33,9 @@ int	check_overflow(char *argv)
 		while (*argv == '0' && ft_strlen(argv) > 1)
 			argv++;
 	}
+	free(tmp);
 	if (ft_strcmp(argv, tmp))
 		return (0);
-	free(tmp);
 	return (1);
 }
 
