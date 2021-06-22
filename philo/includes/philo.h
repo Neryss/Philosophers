@@ -33,7 +33,7 @@
 # define THINK					4
 # define DIED					5
 
-# define PRINT_COLORS			1
+# define PRINT_COLORS			0
 
 typedef struct s_monitor
 {
@@ -70,24 +70,24 @@ typedef struct s_handler
 }				t_handler;
 
 long long	ft_atol(const char *str);
-void		*main_loop(void *pouet);
-int			init_handler(int argc, char **argv, t_handler *handler);
-void		init_philos(t_handler *handler);
-void		print_handler(t_handler *handler);
-void		print_philos(t_handler *handler);
-long long	get_time(void);
-void		print_action(int type, t_philo *philo);
-void		*monitor_philo(void *v_philo);
-void		ft_putcolor(int fd, char *str, char *color);
+long long	ft_atol(const char *str);
+void		ft_bzero(void *s, size_t n);
 void		ft_putstr(int fd, char *str);
 void		ft_putchar(int fd, char c);
 void		ft_putnbr(int fd, long long nb);
 size_t		ft_nblen(long long nb);
 size_t		ft_strlen(char *str);
-int			check_overflow(char *argv);
 char		*ft_ltoa(long long n);
-long long	ft_atol(const char *str);
-void		ft_bzero(void *s, size_t n);
+void		ft_putcolor(int fd, char *str, char *color);
 bool		is_digits(char *str);
+int			init_handler(int argc, char **argv, t_handler *handler);
+void		init_philos(t_handler *handler);
+void		*main_loop(void *pouet);
+void		*monitor_philo(void *v_philo);
+long long	get_time(void);
+void		print_action(int type, t_philo *philo);
+int			check_overflow(char *argv);
+void		print_handler(t_handler *handler);
+void		print_philos(t_handler *handler);
 
 #endif
