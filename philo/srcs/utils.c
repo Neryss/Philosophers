@@ -29,7 +29,7 @@ long long	get_time(void)
 	struct timeval	actual;
 
 	gettimeofday(&actual, NULL);
-	return (actual.tv_sec * 1000 + actual.tv_usec / 1000);
+	return ((actual.tv_sec) * 1000 + (actual.tv_usec) / 1000);
 }
 
 void	print_action(int type, t_philo *philo)
